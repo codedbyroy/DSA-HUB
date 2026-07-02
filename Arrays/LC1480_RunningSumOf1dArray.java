@@ -1,18 +1,52 @@
-// LC 1480 - Running Sum of 1d Array
-// https://leetcode.com/problems/running-sum-of-1d-array/
-// Difficulty: Easy
-// Time: O(n) | Space: O(1) — modifying input in-place
+```java
+public class LC1480_RunningSumOf1dArray {
 
-// Pattern: Prefix Sum
-// Key idea: Each element becomes the sum of all elements before it (inclusive).
-// runningSum[i] = nums[0] + nums[1] + ... + nums[i]
-// Since we only need the previous value, we can do this in-place.
+    // ---------------- Optimal Approach ----------------
+    static int[] runningSum(int[] nums) {
 
-class LC1480_RunningSumOf1dArray {
-    public int[] runningSum(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
             nums[i] += nums[i - 1];
         }
+
         return nums;
     }
+
+    public static void main(String[] args) {
+
+        int[] nums = {1, 2, 3, 4};
+
+        int[] ans = runningSum(nums);
+
+        for (int num : ans) {
+            System.out.print(num + " ");
+        }
+    }
 }
+
+/*
+======================== APPROACH ========================
+
+1. Start from index 1.
+2. Add the previous running sum to the current element.
+3. Continue until the end of the array.
+4. Return the modified array.
+
+================== COMPLEXITY ANALYSIS ==================
+
+Time Complexity  : O(n)
+Space Complexity : O(1)
+
+==================== INTERVIEW NOTES ====================
+
+1. Basic Prefix Sum problem.
+2. Solved in-place without extra array.
+3. Each element stores the sum up to that index.
+
+==================== EDGE CASES ====================
+
+1. Single element array
+2. Negative numbers
+3. All zeros
+
+*/
+```
